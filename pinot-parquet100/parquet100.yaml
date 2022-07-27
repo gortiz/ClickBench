@@ -6,7 +6,7 @@ executionFrameworkSpec:
   segmentMetadataPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentMetadataPushJobRunner'
 jobType: SegmentCreationAndTarPush
 inputDirURI: 'PWD_DIR_PLACEHOLDER'
-includeFileNamePattern: 'glob:PWD_DIR_PLACEHOLDER/parts??.tsv'
+includeFileNamePattern: 'glob:PWD_DIR_PLACEHOLDER/parquet/hits_??.parquet'
 outputDirURI: 'batch/hits/segments'
 overwriteOutput: true
 segmentCreationJobParallelism: 16
@@ -16,6 +16,10 @@ pinotFSSpecs:
 recordReaderSpec:
   dataFormat: 'parquet'
   className: 'org.apache.pinot.plugin.inputformat.parquet.ParquetRecordReader'
+  configClassName: 'org.apache.pinot.plugin.inputformat.parquet.ParquetRecordReaderConfig'
+  configs:
+    useParquetAvroRecordReader: false
+    treatBinaryAsString: true
 
 
 tableSpec:

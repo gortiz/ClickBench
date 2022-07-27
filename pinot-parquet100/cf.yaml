@@ -1,0 +1,95 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Basic instance
+
+Resources:
+  ClickBenchVolume:
+    Type: AWS::EC2::Volume
+    Properties:
+      AvailabilityZone: !GetAtt ClickBenchAppInstance.AvailabilityZone
+      Encrypted: false
+      Size: 500
+      Tags:
+        - Key: Type
+          Value: Benchmark
+        - Key: Benchmark
+          Value: ClickBench
+      VolumeType: gp2
+#    DeletionPolicy: Snapshot
+  VolumeAttachment:
+    Type: AWS::EC2::VolumeAttachment
+    Properties:
+      VolumeId: !Ref ClickBenchVolume
+      InstanceId: !Ref ClickBenchAppInstance
+      Device: /dev/sdh
+
+  ClickBenchAppInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+#      AvailabilityZone:
+#        Fn::GetAZs: us-east-1
+      ImageId: ami-051dcca84f1edfff1 # ImageID valid only in us-east-1 region
+      InstanceType: c6a.xlarge
+      KeyName: gonzalo-aws-default
+      SecurityGroupIds:
+        - !Ref ClickBenchSecurityGroup
+      Tags:
+        - Key: Application
+          Value: ClickBench
+        - Key: Environment
+          Value: Benchmark
+        - Key: LifeTime
+          Value: Transient
+        - Key: Name
+          Value: ClickBench Insttance
+        - Key: OS
+          Value: Linux
+        - Key: OwnerContact
+          Value: "@gonzalo"
+        - Key: Purpose
+          Value: Execute ClickBench benchmark
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash -xe
+          # create mount point directory
+          mkdir /benchmark
+          # create ext4 filesystem on new volume           
+          #mkfs -t ext4 /dev/nvme1n1
+          # add an entry to fstab to mount volume during boot
+          echo "/dev/nvme1n1       /mnt/sdh   ext4    defaults,nofail 0       2" >> /etc/fstab
+          # mount the volume on current boot
+          mount -a
+          chown ubuntu:ubuntu /benchmark
+          apt install jq
+
+  ClickBenchSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Join ["-", [benchmark-security-group, clickbench]]
+      GroupDescription: "Allow HTTP/HTTPS and SSH inbound and outbound traffic"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 9000
+          ToPort: 9000
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+  ClickBenchEIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+      InstanceId: !Ref ClickBenchAppInstance
+      Tags:
+        - Key: Name
+          Value: !Join ["-", [benchmark-eip, clickbench]]
+
+Outputs:
+  WebsiteURL:
+    Value: !Sub http://${ClickBenchEIP}
+    Description: Server's PublicIp Address

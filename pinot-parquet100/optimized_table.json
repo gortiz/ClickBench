@@ -1,0 +1,62 @@
+{
+  "tableName": "hits",
+  "tableType": "OFFLINE",
+  "segmentsConfig": {
+    "segmentPushType": "APPEND",
+    "segmentAssignmentStrategy": "BalanceNumSegmentAssignmentStrategy",
+    "schemaName": "hitsSchema",
+    "replication": "1",
+    "timeColumnName": "EventTimeMs"
+  },
+  "ingestionConfig": {
+    "transformConfigs": [
+      {
+        "columnName": "EventTimeMs",
+        "transformFunction": "fromEpochSeconds(EventTime)"
+      },
+      {
+        "columnName": "EventDateMs",
+        "transformFunction": "fromEpochDays(EventDate)"
+      },
+      {
+        "columnName": "ClientEventTimeMs",
+        "transformFunction": "fromEpochSeconds(ClientEventTime)"
+      },
+      {
+        "columnName": "LocalEventTimeMs",
+        "transformFunction": "fromEpochSeconds(LocalEventTime)"
+      }
+    ]
+  },
+  "tableIndexConfig":{
+    "sortedColumn": [
+      "EventTimeMs"
+    ],
+    "noDictionaryColumns": [
+      "OriginalURL",
+      "RefererHash",
+      "LocalEventTimeMs",
+      "EventTimeMs",
+      "RemoteIP",
+      "URLHash",
+      "URL",
+      "WatchID",
+      "HID",
+      "WindowName",
+      "ConnectTiming",
+      "ClientEventTimeMs",
+      "ResponseEndTiming",
+      "FUniqID",
+      "ClientIP",
+      "ResponseStartTiming",
+      "Referer",
+      "Title",
+      "IPNetworkID"
+    ]
+  },
+  "metadata":{},
+  "tenants": {
+    "server": "DefaultTenant",
+    "broker": "DefaultTenant"
+  }
+}

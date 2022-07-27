@@ -23,11 +23,11 @@ seq 0 99 | xargs -P100 -I{} bash -c 'test -f parquet/hits_{}.parquet || wget --c
 # sed parts*.tsv -e 's "tatuirovarki_redmond tatuirovarki_redmond g' -i
 
 # Fix path to local directory
-sed splitted.yaml 's PWD_DIR_PLACEHOLDER '$PWD' g' -i
-sed local.yaml 's PWD_DIR_PLACEHOLDER '$PWD' g' -i
+cp parquet100.yaml parquet100-fixed.yaml
+sed 's PWD_DIR_PLACEHOLDER '$PWD' g' -i parquet100-fixed.yaml
 
 # Load data
-./apache-pinot-$PINOT_VERSION-bin/bin/pinot-admin.sh LaunchDataIngestionJob -jobSpecFile parquet100.yaml
+./apache-pinot-$PINOT_VERSION-bin/bin/pinot-admin.sh LaunchDataIngestionJob -jobSpecFile parquet100-fixed.yaml
 
 # After upload it shows 94465149 rows instead of 99997497 in the dataset
 
