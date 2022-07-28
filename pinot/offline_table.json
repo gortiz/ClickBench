@@ -5,13 +5,38 @@
     "segmentPushType": "APPEND",
     "segmentAssignmentStrategy": "BalanceNumSegmentAssignmentStrategy",
     "schemaName": "hitsSchema",
-    "replication": "1"
+    "replication": "1",
+    "timeColumnName": "EventTime"
   },
-  "tableIndexConfig":{},
+  "tableIndexConfig":{
+    "sortedColumn": [
+      "EventTime"
+    ],
+    "noDictionaryColumns": [
+      "OriginalURL",
+      "RefererHash",
+      "LocalEventTime",
+      "EventTime",
+      "RemoteIP",
+      "URLHash",
+      "URL",
+      "WatchID",
+      "HID",
+      "WindowName",
+      "ConnectTiming",
+      "ClientEventTime",
+      "ResponseEndTiming",
+      "FUniqID",
+      "ClientIP",
+      "ResponseStartTiming",
+      "Referer",
+      "Title",
+      "IPNetworkID"
+    ]
+  },
   "metadata":{},
-  "tenants":
-  {
-	  "server": "DefaultTenant",
-	  "broker": "DefaultTenant"
+  "tenants": {
+    "server": "DefaultTenant",
+    "broker": "DefaultTenant"
   }
 }

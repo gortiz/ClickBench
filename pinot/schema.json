@@ -6,163 +6,119 @@
   },
   {
     "name": "ClientIP",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "RegionID",
-    "dataType": "LONG"
-  },
-  {
-    "name": "IsRefresh",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "ResolutionWidth",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "ResolutionHeight",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "WindowClientWidth",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "WindowClientHeight",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "URLHash",
     "dataType": "LONG"
   },
   {
-    "name": "JavaEnable",
-    "dataType": "LONG"
-  },
-  {
-    "name": "GoodEvent",
-    "dataType": "LONG"
-  },
-  {
-    "name": "CounterClass",
-    "dataType": "LONG"
-  },
-  {
     "name": "OS",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "UserAgent",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "RefererCategoryID",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "RefererRegionID",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "URLCategoryID",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "URLRegionID",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "ResolutionDepth",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "FlashMajor",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "FlashMinor",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "NetMajor",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "NetMinor",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "UserAgentMajor",
-    "dataType": "LONG"
-  },
-  {
-    "name": "CookieEnable",
-    "dataType": "LONG"
-  },
-  {
-    "name": "JavascriptEnable",
-    "dataType": "LONG"
-  },
-  {
-    "name": "IsMobile",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "MobilePhone",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "IPNetworkID",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "TraficSourceID",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "SearchEngineID",
-    "dataType": "LONG"
-  },
-  {
-    "name": "IsArtifical",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "ClientTimeZone",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "SilverlightVersion1",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "SilverlightVersion2",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "SilverlightVersion3",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "SilverlightVersion4",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "CodeVersion",
-    "dataType": "LONG"
-  },
-  {
-    "name": "IsLink",
-    "dataType": "LONG"
-  },
-  {
-    "name": "IsDownload",
-    "dataType": "LONG"
-  },
-  {
-    "name": "IsNotBounce",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "FUniqID",
@@ -170,95 +126,75 @@
   },
   {
     "name": "HID",
-    "dataType": "LONG"
-  },
-  {
-    "name": "IsOldCounter",
-    "dataType": "LONG"
-  },
-  {
-    "name": "IsEvent",
-    "dataType": "LONG"
-  },
-  {
-    "name": "IsParameter",
-    "dataType": "LONG"
-  },
-  {
-    "name": "DontCountHits",
-    "dataType": "LONG"
-  },
-  {
-    "name": "WithHash",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "Age",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "Sex",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "Income",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "Interests",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "Robotness",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "RemoteIP",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "WindowName",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "OpenerName",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "HistoryLength",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "HTTPError",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "SendTiming",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "DNSTiming",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "ConnectTiming",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "ResponseStartTiming",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "ResponseEndTiming",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "FetchTiming",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "SocialSourceNetworkID",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "ParamPrice",
@@ -266,11 +202,7 @@
   },
   {
     "name": "ParamCurrencyID",
-    "dataType": "LONG"
-  },
-  {
-    "name": "HasGCLID",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "RefererHash",
@@ -278,14 +210,14 @@
   },
   {
     "name": "CLID",
-    "dataType": "LONG"
+      "dataType": "INT"
   }
 
   ],
   "dimensionFieldSpecs": [
   {
     "name": "CounterID",
-    "dataType": "LONG"
+      "dataType": "INT"
   },
   {
     "name": "UserID",
@@ -348,10 +280,6 @@
     "dataType": "STRING"
   },
   {
-    "name": "ClientEventTime",
-    "dataType": "STRING"
-  },
-  {
     "name": "ParamOrderID",
     "dataType": "STRING"
   },
@@ -389,10 +317,6 @@
     "dataType": "STRING"
   },
   {
-    "name": "LocalEventTime",
-    "dataType": "STRING"
-  },
-  {
     "name": "BrowserLanguage",
     "dataType": "STRING"
   },
@@ -416,22 +340,102 @@
  {
     "name": "WatchID",
     "dataType": "LONG"
+    },
+    {
+      "name": "IsRefresh",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "JavaEnable",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "GoodEvent",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "CounterClass",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "CookieEnable",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "JavascriptEnable",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "IsMobile",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "IsArtifical",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "IsLink",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "IsDownload",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "IsNotBounce",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "IsOldCounter",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "IsEvent",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "IsParameter",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "DontCountHits",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "WithHash",
+      "dataType": "BOOLEAN"
+    },
+    {
+      "name": "HasGCLID",
+      "dataType": "BOOLEAN"
   }
 
   ],
   "dateTimeFieldSpecs": [
   {
     "name": "EventTime",
-    "dataType": "STRING",
+    "dataType": "TIMESTAMP",
     "format": "1:SECONDS:SIMPLE_DATE_FORMAT:yyyy-MM-dd HH:mm:ss",
     "granularity": "1:SECONDS"
   },
   {
     "name": "EventDate",
-    "dataType": "STRING",
+    "dataType": "TIMESTAMP",
     "format": "1:DAYS:SIMPLE_DATE_FORMAT:yyyy-MM-dd",
     "granularity": "1:DAYS"
-  }
+  },
+    {
+      "name": "ClientEventTime",
+      "dataType": "TIMESTAMP",
+      "format": "1:SECONDS:SIMPLE_DATE_FORMAT:yyyy-MM-dd HH:mm:ss",
+      "granularity": "1:SECONDS"
+    },
+    {
+      "name": "LocalEventTime",
+      "dataType": "TIMESTAMP",
+      "format": "1:SECONDS:SIMPLE_DATE_FORMAT:yyyy-MM-dd HH:mm:ss",
+      "granularity": "1:SECONDS"
+    }
   ],
   "schemaName": "hitsSchema"
 }
