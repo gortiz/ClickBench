@@ -7,7 +7,7 @@ cat queries.sql | while read query; do
     echo -n "["
     for i in $(seq 1 $TRIES); do
         echo "{\"sql\":\"$query  option(timeoutMs=300000)\"}"| tr -d ';' > query.json
-        RES=$(curl -s -XPOST -H'Content-Type: application/json' http://localhost:8000/query/sql/ -d @query.json | jq 'if .exceptions == [] then .timeUsedMs/1000 else "-" end' )
+        RES=$(curl -s -XPOST -H'Content-Type: application/json' http://localhost:8000/query/sql/ -d @query.json | jq 'if .exceptions == [] then .timeUsedMs/1000 else null end' )
         [[ "$?" == "0" ]] && echo -n "${RES}" || echo -n "null"
         [[ "$i" != $TRIES ]] && echo -n ", "
     done

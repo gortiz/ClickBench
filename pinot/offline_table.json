@@ -6,17 +6,24 @@
     "segmentAssignmentStrategy": "BalanceNumSegmentAssignmentStrategy",
     "schemaName": "hitsSchema",
     "replication": "1",
-    "timeColumnName": "EventTime"
+    "timeColumnName": "EventTimeMs"
   },
-  "tableIndexConfig":{
-    "sortedColumn": [
-      "EventTime"
+  "tenants": {
+    "broker": "DefaultTenant",
+    "server": "DefaultTenant"
+  },
+  "tableIndexConfig": {
+    "invertedIndexColumns": [
+      "AdvEngineID",
+      "RegionID",
+      "MobilePhoneModel",
+      "SearchPhrase"
     ],
     "noDictionaryColumns": [
       "OriginalURL",
       "RefererHash",
-      "LocalEventTime",
-      "EventTime",
+      "LocalEventTimeMs",
+      "EventTimeMs",
       "RemoteIP",
       "URLHash",
       "URL",
@@ -24,7 +31,7 @@
       "HID",
       "WindowName",
       "ConnectTiming",
-      "ClientEventTime",
+      "ClientEventTimeMs",
       "ResponseEndTiming",
       "FUniqID",
       "ClientIP",
@@ -32,11 +39,78 @@
       "Referer",
       "Title",
       "IPNetworkID"
-    ]
+    ],
+    "sortedColumn": [
+      "EventTimeMs"
+    ],
+    "starTreeIndexConfigs": [
+      {
+        "dimensionsSplitOrder": [
+          "AdvEngineID"
+        ],
+        "skipStarNodeCreationForDimensions": [
+        ],
+        "functionColumnPairs": [
+          "AVG__ResolutionWidth",
+          "SUM__AdvEngineID",
+          "COUNT__*",
+          "AVG__UserID"
+        ],
+        "maxLeafRecords": 10000
+      },
+      {
+        "dimensionsSplitOrder": [
+          "SearchEngineID",
+          "SearchPhrase"
+        ],
+        "skipStarNodeCreationForDimensions": [],
+        "functionColumnPairs": [
+          "COUNT__*"
+        ],
+        "maxLeafRecords": 10000
+      }
+    ],
+    "enableDynamicStarTreeCreation": true
   },
-  "metadata":{},
-  "tenants": {
-    "server": "DefaultTenant",
-    "broker": "DefaultTenant"
+  "metadata": {},
+  "fieldConfigList": [
+    {
+      "name": "URL",
+      "encodingType": "RAW",
+      "indexType": "TEXT",
+      "properties": {
+        "fstType": "lucene",
+        "enableQueryCacheForTextIndex": "false"
+      }
+    },
+    {
+      "name": "Title",
+      "encodingType": "RAW",
+      "indexType": "TEXT",
+      "properties": {
+        "fstType": "lucene",
+        "enableQueryCacheForTextIndex": "false"
+      }
+    }
+  ],
+  "ingestionConfig": {
+    "transformConfigs": [
+      {
+        "columnName": "EventTimeMs",
+        "transformFunction": "fromDateTime(EventTime, 'yyyy-MM-dd HH:mm:ss')"
+      },
+      {
+        "columnName": "EventDateMs",
+        "transformFunction": "fromDateTime(EventDate, 'yyyy-MM-dd')"
+      },
+      {
+        "columnName": "ClientEventTimeMs",
+        "transformFunction": "fromDateTime(ClientEventTime, 'yyyy-MM-dd HH:mm:ss')"
+      },
+      {
+        "columnName": "LocalEventTimeMs",
+        "transformFunction": "fromDateTime(LocalEventTime, 'yyyy-MM-dd HH:mm:ss')"
+      }
+    ]
   }
 }
