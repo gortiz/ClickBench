@@ -13,7 +13,27 @@ tar -zxvf apache-pinot-$PINOT_VERSION-bin.tar.gz
 
 mkdir tmp
 
-JAVA_OPTS="-Xms8G -Dlog4j2.configurationFile=conf/log4j2-server.xml -Dpinot.admin.system.exit=true -Djava.io.tmpdir=$PWD/tmp" ./apache-pinot-$PINOT_VERSION-bin/bin/pinot-admin.sh QuickStart -type empty -configFile $PWD/conf/config.conf -dataDir $PWD/data &
+DEBUG_OPTS="
+  -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:9050
+  -Dcom.sun.management.jmxremote.port=5555
+  -Dcom.sun.management.jmxremote.rmi.port=5555
+  -Dcom.sun.management.jmxremote.authenticate=false
+  -Dcom.sun.management.jmxremote.ssl=false
+  -Djava.rmi.server.hostname=127.0.0.1
+"
+
+JAVA_OPTS="
+  -Xms8G
+  -Dlog4j2.configurationFile=conf/log4j2-server.xml
+  -Dpinot.admin.system.exit=true
+  -Djava.io.tmpdir=$PWD/tmp
+  ${DEBUG:+$DEBUG_OPTS}
+  " \
+  ./apache-pinot-$PINOT_VERSION-bin/bin/pinot-admin.sh \
+  QuickStart \
+  -type empty \
+  -configFile $PWD/conf/config.conf \
+  -dataDir $PWD/data &
 sleep 30
 ./apache-pinot-$PINOT_VERSION-bin/bin/pinot-admin.sh AddTable -tableConfigFile offline_table.json -schemaFile schema.json -exec
 
