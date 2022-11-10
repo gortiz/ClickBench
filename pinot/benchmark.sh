@@ -31,11 +31,18 @@ rm hits.tsv
 sed parts93.csv -e 's "tatuirovarki_redmond tatuirovarki_redmond g' -i
 
 # Fix path to local directory
-cp splitted.yaml splitted-fixed.yaml
-sed 's PWD_DIR_PLACEHOLDER '$PWD' g' -i splitted-fixed.yaml
+cp create-segments.yaml create-segments-customized.yaml
+sed 's PWD_DIR_PLACEHOLDER '$PWD' g' -i create-segments-customized.yaml
+cp push-segments.yaml push-segments-customized.yaml
+sed 's PWD_DIR_PLACEHOLDER '$PWD' g' -i push-segments-customized.yaml
 
-# Load data
-PINOT_COMPONENT="load_job" JAVA_OPTS="-Xms8G -Dlog4j2.configurationFile=conf/log4j2.xml -Dpinot.admin.system.exit=true -Djava.io.tmpdir=$PWD/tmp" time ./apache-pinot-$PINOT_VERSION-bin/bin/pinot-admin.sh LaunchDataIngestionJob -jobSpecFile splitted-fixed.yaml
+# Translate csv into segments
+PINOT_COMPONENT="load_job" JAVA_OPTS="-Xms8G -Dlog4j2.configurationFile=conf/log4j2.xml -Dpinot.admin.system.exit=true -Djava.io.tmpdir=$PWD/tmp" time ./apache-pinot-$PINOT_VERSION-bin/bin/pinot-admin.sh LaunchDataIngestionJob -jobSpecFile create-segments-customized.yaml
+
+rm *.csv
+
+# Push segments
+PINOT_COMPONENT="load_job" JAVA_OPTS="-Xms8G -Dlog4j2.configurationFile=conf/log4j2.xml -Dpinot.admin.system.exit=true -Djava.io.tmpdir=$PWD/tmp" time ./apache-pinot-$PINOT_VERSION-bin/bin/pinot-admin.sh LaunchDataIngestionJob -jobSpecFile push-segments-customized.yaml
 
 # Run the queries
 ./run.sh
