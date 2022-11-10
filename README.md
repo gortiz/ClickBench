@@ -190,7 +190,7 @@ The benchmark is created and used by the ClickHouse team. It can be surprising, 
 
 Now the new benchmark is easy to use and the results for any system can be reproduced in around 20 minutes.
 
-We also introduced the [Hardware Benchmark](https://clickhouse.com/benchmark/hardware/) for testing servers and VMs.
+We also introduced the [Hardware Benchmark](https://benchmark.clickhouse.com/hardware/) for testing servers and VMs.
 
 ## Systems Included
 
@@ -212,8 +212,10 @@ We also introduced the [Hardware Benchmark](https://clickhouse.com/benchmark/har
 - [x] MonetDB
 - [x] mapD/Omnisci/HeavyAI
 - [x] Databend
+- [x] DataFusion
 - [x] ByteHouse
 - [ ] Doris/PALO
+- [x] SelectDB
 - [x] Druid
 - [x] Pinot
 - [x] CrateDB
@@ -396,6 +398,15 @@ https://github.com/db-benchmarks/db-benchmarks
 
 A benchmark suite inspired by ClickHouse benchmarks.
 Used mostly to compare search engines: Elasticsearch and Manticore.
+
+### SciTS
+
+https://arxiv.org/abs/2204.09795 or https://dl.acm.org/doi/10.1145/3538712.3538723
+A new benchmark for time-series workloads.  
+Tests both insertion and query speeds, as well as resource consumption.
+
+Includes TimescaleDB, InfluxDB, PostgreSQL and ClickHouse.  
+This benchmark is fully independent and [open-source](https://github.com/jalalmostafa/SciTS).
 
 ### STAC
 
