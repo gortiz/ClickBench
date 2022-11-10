@@ -1,6 +1,10 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: Basic instance
 
+Parameters:
+  myKeyPair:
+    Description: Amazon EC2 Key Pair
+    Type: "AWS::EC2::KeyPair::KeyName"
 Resources:
   ClickBenchVolume:
     Type: AWS::EC2::Volume
@@ -29,7 +33,7 @@ Resources:
 #        Fn::GetAZs: us-east-1
       ImageId: ami-051dcca84f1edfff1 # ImageID valid only in us-east-1 region
       InstanceType: c6a.4xlarge
-      KeyName: gonzalo-aws-default
+      KeyName: !Ref myKeyPair
       SecurityGroupIds:
         - !Ref ClickBenchSecurityGroup
       Tags:
@@ -59,7 +63,7 @@ Resources:
           # mount the volume on current boot
           mount -a
           chown ubuntu:ubuntu /benchmark
-          apt install jq git
+          apt install jq git zip unzip -y
 
   ClickBenchSecurityGroup:
     Type: AWS::EC2::SecurityGroup
