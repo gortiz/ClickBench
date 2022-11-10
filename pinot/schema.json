@@ -1,5 +1,5 @@
 {
-  "schemaName": "hitsSchema",
+  "schemaName": "hits",
   "dimensionFieldSpecs": [
     {
       "name": "CounterID",
