@@ -6,7 +6,7 @@ sudo update-alternatives --config java
 
 # Install
 
-PINOT_VERSION=0.10.0
+PINOT_VERSION=0.11.0
 
 wget https://downloads.apache.org/pinot/apache-pinot-$PINOT_VERSION/apache-pinot-$PINOT_VERSION-bin.tar.gz
 tar -zxvf apache-pinot-$PINOT_VERSION-bin.tar.gz
