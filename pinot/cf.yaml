@@ -68,7 +68,7 @@ Resources:
   ClickBenchSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: !Join ["-", [benchmark-security-group, clickbench, 2]]
+      GroupName: !Join ["-", [benchmark-security-group, !Ref AWS::StackName]]
       GroupDescription: "Allow HTTP/HTTPS and SSH inbound and outbound traffic"
       SecurityGroupIngress:
         - IpProtocol: tcp
@@ -91,7 +91,7 @@ Resources:
       InstanceId: !Ref ClickBenchAppInstance
       Tags:
         - Key: Name
-          Value: !Join ["-", [benchmark-eip, clickbench, 2]]
+          Value: !Join ["-", [benchmark-eip, !Ref AWS::StackName]]
 
 Outputs:
   WebsiteURL:
